@@ -10,8 +10,8 @@ namespace CS_DZ_LINQ_5
     {
         static void Main(string[] args)
         {
-            List<CanStew> stewCans = new List<CanStew> { new CanStew("Орская", 2022, 2023), new CanStew("Настоящая", 2020, 2021),
-            new CanStew("СОВЕТСКАЯ", 1930, 2354), new CanStew("Перекус с гречкой", 2021, 2021)};
+            List<Stew> stews = new List<Stew> { new Stew("Орская", 2022, 2023), new Stew("Настоящая", 2020, 2021),
+            new Stew("СОВЕТСКАЯ", 1930, 2354), new Stew("Перекус с гречкой", 2021, 2021)};
 
             Console.WriteLine("Для вывода просрочи введите просрочка или 1");
             string userInput = Console.ReadLine();
@@ -20,11 +20,11 @@ namespace CS_DZ_LINQ_5
             {
                 Console.Clear();
 
-                var overdueCans = stewCans.Where(can => can.ExpirationDate < 2022);
+                var overdue = stews.Where(stew => stew.ExpirationDate < 2022);
 
-                foreach (var can in overdueCans)
+                foreach (var stew in overdue)
                 {
-                    Console.WriteLine(can.Name + " произведена в " + can.ProductionYear + " годна до " + can.ExpirationDate);
+                    Console.WriteLine(stew.Name + " произведена в " + stew.ProductionYear + " годна до " + stew.ExpirationDate);
                 }
             }
             else
@@ -35,7 +35,7 @@ namespace CS_DZ_LINQ_5
         }
     }
 
-    class CanStew
+    class Stew
     {
         public string Name { get; private set; }
 
@@ -43,7 +43,7 @@ namespace CS_DZ_LINQ_5
 
         public int ExpirationDate { get; private set; }
 
-        public CanStew (string name, int productionYear, int expirationDate)
+        public Stew (string name, int productionYear, int expirationDate)
         {
             Name = name;
             ProductionYear = productionYear;
